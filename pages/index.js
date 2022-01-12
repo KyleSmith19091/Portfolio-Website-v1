@@ -1,82 +1,75 @@
-import Head from 'next/head'
+import {useRef, useEffect} from 'react';
+import Layout from "../components/layout";
+import AboutMe from "../components/aboutMe";
+import Work from "../components/work";
+import FavProject from "../components/favProject";
+import OtherProject from "../components/otherProject";
+import Contact from "../components/contact";
 
-export default function Home() {
-  return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2">
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+import { getData as getFeaturedProjects } from './api/featuredProjects';
+import { getData as getWork } from './api/work';
 
-      <main className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center">
-        <h1 className="text-6xl font-bold">
-          Welcome to{' '}
-          <a className="text-blue-600" href="https://nextjs.org">
-            Next.js!
-          </a>
-        </h1>
+import { Link } from 'react-scroll';
 
-        <p className="mt-3 text-2xl">
-          Get started by editing{' '}
-          <code className="p-3 font-mono text-lg bg-gray-100 rounded-md">
-            pages/index.js
-          </code>
-        </p>
+export async function getServerSideProps() {
+	const res = await fetch(`https://api.github.com/users/sKorpion19091/repos`);
+	const githubRepos = await res.json();
 
-        <div className="flex flex-wrap items-center justify-around max-w-4xl mt-6 sm:w-full">
-          <a
-            href="https://nextjs.org/docs"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Documentation &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Find in-depth information about Next.js features and API.
-            </p>
-          </a>
+	const featuredProjects = getFeaturedProjects();
+	const workProjects = getWork();
+	const otherProjects = [];
 
-          <a
-            href="https://nextjs.org/learn"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Learn &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Learn about Next.js in an interactive course with quizzes!
-            </p>
-          </a>
+	githubRepos.forEach((repo) => {
+		if(repo.stargazers_count > 0) {
+			otherProjects.push(repo);
+		}
+	});
 
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Examples &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Discover and deploy boilerplate example Next.js projects.
-            </p>
-          </a>
+	return {
+		props: {
+			data: {
+				otherProjects,
+				featuredProjects,
+				workProjects
+			}
+		}, 
+	}
+}
 
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Deploy &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
+export default function Home({ data }) {
+	const heroText__1 = useRef(null);
+	const heroText__2 = useRef(null);
 
-      <footer className="flex items-center justify-center w-full h-24 border-t">
-        <a
-          className="flex items-center justify-center"
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className="h-4 ml-2" />
-        </a>
-      </footer>
-    </div>
-  )
+	useEffect(() => {
+		setTimeout(() => {
+			heroText__1.current.classList.add("anim");
+		}, 1000);
+		setTimeout(() => {
+			heroText__2.current.classList.add("anim");
+		}, 1500);
+	}, []);
+
+	return (
+		<Layout>
+			<div className="flex flex-col h-full">
+				<div className="flex flex-col justify-center h-4/5">
+					<div className="font-main">
+						<p className="text-base sm:text-lg heroIntroduction">Hi I'm Kyle Smith</p>
+						<h1 className="font-bold text-3xl md:text-5xl lg:text-8xl">{'<'}
+							<span ref={heroText__1} className="hero-text">Student</span> By Day and 
+							<br/><span ref={heroText__2} className="hero-text after:bg-purple-600">Developer </span>By Night{'/>'}
+						</h1>
+					</div>
+				</div>
+				<Link to="aboutMe" spy={true} smooth={true} delay={300} duration={800} className="relative w-full cursor-pointer">
+					<div className="heroScroll w-7 h-7 sm:h-[40px] sm:w-[40px]"></div>
+				</Link>
+			</div>
+			<AboutMe />
+			<Work projects={data.workProjects} />
+			<FavProject projects={data.featuredProjects} />
+			<OtherProject projects={data.otherProjects}/>
+			<Contact />
+		</Layout>
+	)
 }

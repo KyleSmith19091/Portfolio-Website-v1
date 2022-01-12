@@ -1,3 +1,243 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+	.debug {
+		border: 1px solid red;
+	}
+
+	.menuIcon {
+		position: relative;
+		border: 5px solid black;
+		width: 30px;
+		height: 30px;
+		will-change: transform;
+		transition: transform 0.4s ease-in-out;
+		cursor: pointer;
+	}
+
+	.menuIcon::before {
+		content: "";
+		position: absolute;
+		width: 24px;
+		height: 0px;
+		top: 0;
+		left: 0;
+		background-color: black;
+		will-change: height;
+		transition: height 0.5s ease-in-out;
+	}
+
+	.menuIcon:hover {
+		transform: rotate(180deg);	
+	}
+
+	.menuIcon:hover::before {
+		height: 24px;
+	}
+
+	.link {
+		position: relative;
+	}
+
+	.link::after {
+		content: "";
+		position: absolute;
+		background-color: black;
+		width: 100%;
+		height: 0;
+		bottom: 0;
+		left: 0;
+		transition: height 0.2s ease-in-out;
+	}
+
+	.link:hover::after {
+		height: 10%;
+		animation: coverUp 0.8s ease-in-out;
+	}
+
+	@keyframes coverUp {
+		0% { height: 0; }
+		50% { height: 100%; }
+		100% { height: 10%; }
+	}
+
+	.cover {
+		position: absolute;
+		right: 0;
+		bottom: 0;	
+		width: 0;
+		height: 100vh;
+		background-color: black;
+		z-index: 10;
+		transition: width 0.8s ease-in-out;
+		overflow: hidden;
+	}
+
+	.cover > * {
+		opacity: 0;
+		transition: opacity 0.1s ease-in-out;
+	}
+
+	.cover.open > * {
+		opacity: 1;
+	}
+
+	.cover.open {
+		width: 100%;
+		height: 100vh;
+		transition: width 0.8s ease-in-out;
+	}
+
+	.menuOption {
+		position: relative;
+	}
+
+	.menuOption::before {
+		content: "";
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		width: 0;
+		height: 0;
+		background-color: #05F4B7;
+		transition: width 0.5s ease-in-out;
+	}	
+
+	.menuOption:hover::before {
+		width: 100%;
+		height: 5px;
+	}
+
+	.stopScrolling {
+  		height: 100%;
+  		overflow: hidden;
+	}
+
+	.heroScroll {
+		display: block;
+		position: absolute;	
+		left: 45%;
+		bottom: 10%;
+		transform: translate(-50%,-50%);
+		border-radius: 0.3em;
+		background-color: black;
+		width: 40px;
+		height: 40px;
+		transform: rotate(45deg) translateY(0px);
+		will-change: transform;
+		animation: float 2s ease-in-out infinite;
+	}
+
+	@keyframes float {
+		0% {
+			transform: translateY(0px) rotate(-45deg);
+		}
+		50% {
+			transform: translateY(20px) rotate(-45deg);
+		}
+		100% {
+			transform: translateY(0px) rotate(-45deg);
+		}
+	}
+
+	.hero-text {
+		position: relative;	
+	}
+
+	.hero-text::after {
+		content: "";
+		position: absolute;
+		left: 0;
+		bottom: 10%;
+		width: 99%;
+		height: 80%;
+		background-color: #05F4B7;
+		will-change: height;
+		transition: height 1.2s ease;
+	}
+
+	.hero-text.anim::after{
+		width: 99%;
+		height: 10px;
+	}
+
+	.personalImageShadow {
+		border-radius: 0.35em;
+		box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, black 10px 10px 0px 3px;
+		will-change: box-shadow, transform;
+		transition: box-shadow 0.35s ease-in-out, transform 0.5s ease-in-out;
+	}
+	
+	.personalImageShadow:hover {
+		box-shadow: none;
+		transform: scale(1.1);
+	}
+
+	.thickBorder {
+		border: 4px solid #05F4B7;
+		border-radius: 0.5em;
+	}
+
+	.thinBorder {
+		border: 2px solid #05F4B7;
+		border-radius: 0.5em;
+	}
+
+	.favProjectCardCover {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 0;
+		will-change: height;	
+		transition: height 0.6s ease-in-out;
+		background-color: #05F4B7;
+		overflow: hidden;
+	}	
+
+	.favProjectCardCover.anim {
+		width: 100%;
+		height: 100%;
+		overflow: visible;
+	}
+
+	.otherProjectContainer {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+		gap: 2em;
+	}
+
+	.otherProjectCard {
+		will-change: transform;
+		transition: transform 0.1s linear;
+	}
+
+	.otherProjectCard:hover {
+		transform: translateY(-2%) !important;
+	}
+
+	.githubLink svg path {
+		transition: fill 0.3s linear;
+	}
+
+	.githubLink:hover svg path {
+		fill: #05F4B7;
+	}
+
+	.contactLink {
+		position: relative;	
+	}
+
+	.contactLink::after {
+		content: "";
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 4px;
+		background-color: black;
+	}
+
+}
