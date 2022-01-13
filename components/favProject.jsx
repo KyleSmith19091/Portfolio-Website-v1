@@ -11,7 +11,7 @@ const FavProject = ({ projects }) => {
 				<div className="flex flex-col space-y-10 pt-5 md:pl-12 sm:pl-8">
 					{projects.map((project,idx) => {
 						return(
-							<FavProjectCard id={idx} key={idx} title={project.title} description={project.description} date={project.date} technologies={project.technologies} />
+							<FavProjectCard id={idx} key={idx} githubLink={project.githubLink} title={project.title} description={project.description} date={project.date} technologies={project.technologies} />
 						);
 					})}
 				</div>

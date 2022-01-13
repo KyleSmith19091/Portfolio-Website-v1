@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import anime from 'animejs';
 import { useInView } from 'react-intersection-observer';
 
-const FavProjectCard = ({ id, title, description, date, technologies }) => {
+const FavProjectCard = ({ id, title, description, date, technologies, githubLink }) => {
 	const [clicked, setClicked] = useState(false);
 	const coverRef = useRef(null);
 
@@ -12,9 +12,9 @@ const FavProjectCard = ({ id, title, description, date, technologies }) => {
 		console.log("Card Clicked: " + clicked);
 	};
 
-	const observerOptions = { 
-		threshold: 0.6, 
-		triggerOnce: true 
+	const observerOptions = {
+		threshold: 0.6,
+		triggerOnce: true
 	};
 	const { ref, inView, entry } = useInView(observerOptions);
 
@@ -22,14 +22,14 @@ const FavProjectCard = ({ id, title, description, date, technologies }) => {
 		console.log(inView);
 		if (inView) {
 			anime({
-				targets: '.favProject .favProjectCard'+id,
+				targets: '.favProject .favProjectCard' + id,
 				translateY: 0,
 				opacity: 1,
 				duration: 1000,
 			});
 		} else {
 			anime({
-				targets: '.favProject .favProjectCard'+id,
+				targets: '.favProject .favProjectCard' + id,
 				translateY: 270,
 				opacity: 0,
 			});
@@ -37,7 +37,7 @@ const FavProjectCard = ({ id, title, description, date, technologies }) => {
 	}, [inView]);
 
 	return (
-		<article className={"flex flex-col bg-white p-5 space-y-5 thinBorder relative w-full lg:w-full favProjectCard" + id} ref={ref}>
+		<article className={"flex flex-col bg-white p-5 space-y-5 thinBorder relative w-full lg:w-3/4 favProjectCard" + id} ref={ref}>
 			<div className="flex font-main items-center justify-between">
 				<p className="text-gray-800 text-xs">{date}</p>
 				<h3 className="font-main font-bold text-lg text-black">FP</h3>
@@ -48,11 +48,13 @@ const FavProjectCard = ({ id, title, description, date, technologies }) => {
 				</span>
 			</div>
 			<div>
-				<h1 className="font-main font-bold text-black text-xl">{title}</h1>
+				<a className="link" target="blank" href={githubLink}>
+					<h1 className="font-main font-bold text-black text-xl"><span className="link">{title}</span></h1>
+				</a>
 			</div>
 			<div className="flex justify-between text-black">
 				<ul className="flex space-x-3 text-black font-main text-sm">
-					{technologies.map((tech,idx) => {
+					{technologies.map((tech, idx) => {
 						return <li key={idx}>{tech}</li>
 					})}
 				</ul>
@@ -61,7 +63,9 @@ const FavProjectCard = ({ id, title, description, date, technologies }) => {
 			<div ref={coverRef} className="favProjectCardCover">
 				<div className="flex flex-col justify-between p-5 h-full text-white">
 					<div className="flex font-main items-center justify-between">
-						<h1 className="font-main font-bold text-lg md:text-xl">{title}</h1>
+						<a target="blank" href={githubLink}>
+							<h1 className="font-main font-bold text-lg md:text-xl"><span className="link after:bg-white">{title}</span></h1>
+						</a>
 						<h3 className="font-main font-bold text-lg md:text-xl">FP</h3>
 					</div>
 					<p className="font-main text-white text-sm md:text-base">{description}</p>

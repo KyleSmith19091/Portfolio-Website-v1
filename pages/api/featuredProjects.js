@@ -8,28 +8,30 @@ export function getData() {
 				"C++",
 				"Make",
 				"ANSI"
-			]
+			],
+			githubLink: "https://github.com/sKorpion19091/Lightweight-CPP-Logging" 
 		},
 		{
 			title: "K Nearest Neighbor",
-			description: "Lightweight CPP Logging is a single header file implementation to provide a rich text logging experience and also a nifty progress bar. This library brings color to what many would say is a dull workspace ahem the terminal.",
+			description: "This is an implementation of the KNearest Neighbour algorithm in C++, this repo reads data from the MNIST dataset. I added a MNIST file parser to read image data and labels. The image data is wrapped in an Image object where the pixel data is stored in a Eigen Matrix to allow for effiecent calculation of the euclidian distance when using the algorithm.",
 			date: "15 Jan 2021",
 			technologies: [
 				"C++",
 				"Make",
 				"MNIST",
 				"Eigen"
-			]
+			],
+			githubLink: "https://github.com/sKorpion19091/KNearestNeighbourFromScratch" 
 		},
 		{
-			title: "Pokemon Terminal Images",
-			description: "This is a fun project, so please excuse the lack of file structure. This is a project that uses opencv and the terminal ANSI color system to generate pokemon images from .png files.",
+			title: "Grep Implementation",
+			description: "This is a naive implementation of the GNU grep tool, it follows the same algorithm for the string matching which is the Boyer Moore string matching algorithm.",
 			date: "22 Oct 2021",
 			technologies: [
 				"C++",
 				"Make",
-				"OpenCV",
-			]
+			],
+			githubLink: "https://github.com/sKorpion19091/GREP_Implementation" 
 		},
 	];
 

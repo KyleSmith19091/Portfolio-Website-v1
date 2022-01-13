@@ -13,17 +13,10 @@ import { Link } from 'react-scroll';
 
 export async function getServerSideProps() {
 	const res = await fetch(`https://api.github.com/users/sKorpion19091/repos`);
-	const githubRepos = await res.json();
-
+    const githubRepos = (await res.json()).filter(repo => repo.stargazers_count > 0 && repo.fork === false);
 	const featuredProjects = getFeaturedProjects();
 	const workProjects = getWork();
-	const otherProjects = [];
-
-	githubRepos.forEach((repo) => {
-		if(repo.stargazers_count > 0) {
-			otherProjects.push(repo);
-		}
-	});
+	const otherProjects = githubRepos;
 
 	return {
 		props: {
