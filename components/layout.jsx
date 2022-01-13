@@ -16,7 +16,7 @@ const Layout = ({children}) => {
 			<header className="min-w-screen w-full">
 				<Navbar />
 			</header>
-			<main className="h-full pl-5 pr-5 sm:pl-32 sm:pr-32 space-y-52">
+			<main className="h-full pl-3 pr-3 sm:pl-32 sm:pr-32 space-y-52">
 				{children}	
 				<footer className="w-full flex justify-center font-mono text-sm">Designed And Created By Kyle Smith</footer>
 			</main>

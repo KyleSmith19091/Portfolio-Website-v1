@@ -19,7 +19,7 @@ const OtherProject = ({projects}) => {
 				targets: '.otherProjectContainer .otherProjectCard',
 				translateY: 0,
 				opacity: 1,
-				delay: anime.stagger(100) // increase delay by 100ms for each elements.
+				delay: anime.stagger(300),
 			});
 		} else {
 			anime({
@@ -35,7 +35,7 @@ const OtherProject = ({projects}) => {
 		<Element name="otherProject">
 			<section ref={ref}>
 				<SectionHeader text="Other Projects" number={3} />
-				<div className="otherProjectContainer mt-5 p-0 md:pl-12 sm:pl-8">
+				<div className="otherProjectContainer w-full pt-5 md:pl-12 sm:pl-8">
 					{projects.map((project,idx) => {
 						return (
 							<OtherProjectCard key={idx} title={project.name} description={project.description} languages={project.language} githubLink={project.svn_url}/>

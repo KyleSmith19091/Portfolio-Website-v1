@@ -31,11 +31,11 @@ const Navbar = () => {
 			</Link>
 			<button onClick={onMenuButtonClicked} className="mr-3 menuIcon xs:w-6 xs:h-6"></button>
 			<div ref={menuRef} className="cover">
-				<div className="flex p-5 items-center justify-between">
+				<div className="flex items-center justify-between py-3 sm:py-5 pl-3 pr-1 sm:pl-10 sm:pr-10">
 					<h1 className="font-main font-bold text-white">Kyle S.</h1>
 					<button onClick={onMenuButtonClicked} className="mr-3 menuIcon border-white before:bg-white xs:w-6 xs:h-6"></button>
 				</div>
-				<div className="w-full mt-10">
+				<div className="w-full flex h-[80%] items-center">
 					<ul className="flex flex-col font-main font-bold text-white text-3xl md:text-4xl lg:text-6xl space-y-10 pl-5 pr-5 sm:pl-32 sm:pr-32 menuOptions">
 						<ScrollLink className="cursor-pointer" onClick={onMenuButtonClicked} to="aboutMe" spy={true} smooth={true} delay={300} duration={800}><li className="menuOption">About Me</li></ScrollLink>
 						<ScrollLink className="cursor-pointer" onClick={onMenuButtonClicked} to="work" spy={true} smooth={true} delay={300} duration={800}><li className="menuOption">Work I've Done</li></ScrollLink>

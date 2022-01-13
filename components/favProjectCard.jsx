@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import anime from 'animejs';
 import { useInView } from 'react-intersection-observer';
 
-const FavProjectCard = ({ title, description, date, technologies }) => {
+const FavProjectCard = ({ id, title, description, date, technologies }) => {
 	const [clicked, setClicked] = useState(false);
 	const coverRef = useRef(null);
 
@@ -12,30 +12,32 @@ const FavProjectCard = ({ title, description, date, technologies }) => {
 		console.log("Card Clicked: " + clicked);
 	};
 
-	const observerOptions = { threshold: 0.8, triggerOnce: true };
+	const observerOptions = { 
+		threshold: 0.6, 
+		triggerOnce: true 
+	};
 	const { ref, inView, entry } = useInView(observerOptions);
 
 	useEffect(() => {
 		console.log(inView);
 		if (inView) {
 			anime({
-				targets: '.favProjectCard',
+				targets: '.favProject .favProjectCard'+id,
 				translateY: 0,
 				opacity: 1,
-				delay: anime.stagger(100) 
+				duration: 1000,
 			});
 		} else {
 			anime({
-				targets: '.favProjectCard',
+				targets: '.favProject .favProjectCard'+id,
 				translateY: 270,
 				opacity: 0,
-				delay: anime.stagger(100) 
 			});
 		}
 	}, [inView]);
 
 	return (
-		<article className="favProjectCard flex flex-col bg-white p-5 space-y-5 thinBorder relative w-full md:w-3/4" ref={ref}>
+		<article className={"flex flex-col bg-white p-5 space-y-5 thinBorder relative w-full lg:w-full favProjectCard" + id} ref={ref}>
 			<div className="flex font-main items-center justify-between">
 				<p className="text-gray-800 text-xs">{date}</p>
 				<h3 className="font-main font-bold text-lg text-black">FP</h3>
