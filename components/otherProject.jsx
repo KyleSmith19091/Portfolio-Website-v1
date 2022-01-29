@@ -8,7 +8,6 @@ import { useInView } from 'react-intersection-observer';
 
 const OtherProject = ({projects}) => {
 	const observerOptions = {
-		threshold: 0.1,
 		triggerOnce: true
 	};
 	const { ref, inView, _ } = useInView(observerOptions);

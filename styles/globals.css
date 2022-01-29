@@ -240,4 +240,14 @@
 		background-color: black;
 	}
 
+	.techProgressBar {
+		height: 10px;
+		border-radius: 5px;
+	}
+
+	.techProgressBar__Bottom {
+		background-color: #E5E5E5;
+		width: 300px;
+	}
+
 }

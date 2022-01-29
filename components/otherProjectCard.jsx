@@ -10,7 +10,7 @@ const OtherProjectCard = ({ title, description, languages, githubLink }) => {
 				</div>
 				<h1 className="text-black text-lg font-bold">{title}</h1>
 				<p className="text-sm text-gray-600 overflow-ellipsis">{description}</p>
-				<ul className="flex text-sm text-gray-400 font-mono space-x-5">
+				<ul className="flex items-end h-full text-sm text-gray-400 font-mono space-x-5">
 					<li>{languages}</li>
 				</ul>
 			</article>
