@@ -4,7 +4,9 @@ export function getData() {
 			company: 'STEMEY',
 			position: 'Lead Web Developer',
 			description: [
-				"Worked with a technical team where I worked on redesigning their website.",
+				"Worked on a technical team",
+				"Technical and design maintenance of website",
+				"Worked on complete redesign of existing website",
 				"Performed Technical Interviews"
 			],
 			technologies: [
@@ -21,6 +23,7 @@ export function getData() {
 			position: 'Technical Intern',
 			description: [
 				"Performed Data analytics on Fuel monitoring System",
+				"Interacted and investigated fuel system database"
 			],
 			technologies: [
 				"Python",

@@ -68,7 +68,7 @@ const FavProjectCard = ({ id, title, description, date, technologies, githubLink
 						</a>
 						<h3 className="font-main font-bold text-lg md:text-xl">FP</h3>
 					</div>
-					<p className="font-main text-white text-sm md:text-base">{description}</p>
+					<p className="font-main text-white text-xs md:text-base">{description}</p>
 					<button className="text-white text-xl text-right hover:translate-x-2 transition-transform" onClick={onCardClick}>⟶</button>
 				</div>
 			</div>

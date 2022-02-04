@@ -31,7 +31,7 @@ const TechProgress = ({ icon, tech, progress, invert, id }) => {
 	return (
 		<div className="flex items-center space-x-3 progressContainer" ref={ref}>
 			{icon}
-			<h3 className="font-mono w-[70px]">{tech}</h3>
+			<h3 className="font-mono text-sm md:text-base w-[50px] md:w-[70px]">{tech}</h3>
 			<div className="techProgressBar techProgressBar__Bottom">
 				<div style={{ backgroundColor: invert ? "#05F4B7" : "#371BB1"}} className={`techProgressBar inner${id}`}></div>
 			</div>
