@@ -10,8 +10,7 @@ import CPPIcon from '../Icons/cppIcon';
 import JSIcon from '../Icons/jsIcon';
 import JavaIcon from '../Icons/javaIcon';
 import PythonIcon from '../Icons/pythonIcon';
-
-import NodeJSIcon from '../Icons/nodeJSIcon';
+import NodeJSIcon from '../Icons/nodejsIcon';
 import ReactIcon from '../Icons/reactIcon';
 
 const AboutMe = () => {
@@ -57,7 +56,7 @@ const AboutMe = () => {
 							have an unique view of how to make an algorithm beter and more effective. With every program that I write
 							I want it to beter and cleaner than the last.
 							<br />
-							<quote className="bg-teal-300 text-white font-mono font-bold text-xs md:text-sm">"Sometimes it is the people no one can imagine anything of who do the things no one can imagine." - Alan Turing</quote>
+							<quote className="bg-teal-300 text-white font-mono font-bold text-xs md:text-sm px-3">"Sometimes it is the people no one can imagine anything of who do the things no one can imagine." - Alan Turing</quote>
 						</p>
 						<div className="flex flex-col justify-start w-full space-y-8">
 							<TechProgress tech="C++" progress="95" icon={<CPPIcon />} id="1"/>
