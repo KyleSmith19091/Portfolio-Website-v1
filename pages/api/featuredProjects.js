@@ -9,7 +9,7 @@ export function getData() {
 				"Make",
 				"ANSI"
 			],
-			githubLink: "https://github.com/sKorpion19091/Lightweight-CPP-Logging" 
+			githubLink: "https://github.com/KyleSmith19091/Lightweight-CPP-Logging" 
 		},
 		{
 			title: "K Nearest Neighbor",
@@ -21,7 +21,7 @@ export function getData() {
 				"MNIST",
 				"Eigen"
 			],
-			githubLink: "https://github.com/sKorpion19091/KNearestNeighbourFromScratch" 
+			githubLink: "https://github.com/KyleSmith19091/KNearestNeighbourFromScratch" 
 		},
 		{
 			title: "Grep Implementation",
@@ -31,7 +31,7 @@ export function getData() {
 				"C++",
 				"Make",
 			],
-			githubLink: "https://github.com/sKorpion19091/GREP_Implementation" 
+			githubLink: "https://github.com/KyleSmith19091/GREP_Implementation" 
 		},
 	];
 

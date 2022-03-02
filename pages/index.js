@@ -12,7 +12,7 @@ import { getData as getWork } from './api/work';
 import { Link } from 'react-scroll';
 
 export async function getServerSideProps() {
-	const res = await fetch(`https://api.github.com/users/sKorpion19091/repos`);
+	const res = await fetch(`https://api.github.com/users/KyleSmith19091/repos`);
     const githubRepos = (await res.json()).filter(repo => repo.stargazers_count > 0 && repo.fork === false);
 	const featuredProjects = getFeaturedProjects();
 	const workProjects = getWork();
